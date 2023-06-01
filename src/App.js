@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { data } from "./data";
+import { ProductProvider } from "./components/ProductContext";
 
 // Bileşenler
 import Navigation from "./components/Navigation";
 import Products from "./components/Products";
 import ShoppingCart from "./components/ShoppingCart";
+
 
 function App() {
   const [products, setProducts] = useState(data);
@@ -16,8 +18,12 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <ProductProvider>
+       <div className="App">
       <Navigation cart={cart} />
+       </ProductProvider>
+    
+
 
       {/* Routelar */}
       <main className="content">
